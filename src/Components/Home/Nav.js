@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <nav className="navbar navbar-fixed-top navbar-default">
@@ -29,25 +31,25 @@ const Nav = () => {
         >
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="#latestalbum">Latest Album</a>
+              <Link to="/Home">Home</Link>
             </li>
             <li>
-              <a href="#featuredalbum">Featured Album</a>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="#joinus">Join Us</a>
+              <Link to="/register">Register</Link>
             </li>
             <li>
-              <a href="#portfolio">Portfolio</a>
+              <Link to="#portfolio">Portfolio</Link>
             </li>
             <li>
-              <a href="#events">Events</a>
+              <Link to="#events">Events</Link>
             </li>
             <li>
-              <a href="#team">Team</a>
+              <Link to="#team">Team</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="#contact">Contact</Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 import Header from "./Components/Home/Header";
+import Nav from "./Components/Home/Nav";
 import Banner from "./Components/Home/Banner";
 import LatestAlbum from "./Components/Hero/LatestAlbum";
 import Promo from "./Components/Hero/Promo";
@@ -16,13 +17,18 @@ import Contact from "./Components/Other/Contact";
 import Footer from "./Components/Home/Footer";
 import ScrollToTop from "./Components/Utils/ScrollToTop";
 import Modal from "./Components/Other/Modal";
+import Register from "./Components/Authentication/Register/Register";
+import Login from "./Components/Authentication/Login/Login";
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <div className="wrapper" id="home">
         <Header />
-        <Banner />
+        <Nav />
+        {/* <Banner />
         <LatestAlbum />
         <Promo />
         <FeaturedAlbum />
@@ -36,7 +42,13 @@ function App() {
         <Contact />
         <Footer />
         <ScrollToTop />
-        <Modal />
+        <Modal /> */}
+
+        <Routes>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </div>
 
       {/* <!-- Javascript files --> */}

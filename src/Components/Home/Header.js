@@ -1,5 +1,3 @@
-import Nav from "./Nav";
-
 const Header = () => {
   return (
     <>
@@ -36,8 +34,6 @@ const Header = () => {
             <div className="clearfix"></div>
           </div>
         </nav>
-
-        <Nav />
       </header>
     </>
   );
