@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { AuthContext } from "../../Contexts/authContext";
+
 const Nav = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <nav className="navbar navbar-fixed-top navbar-default">
       <div className="container">
@@ -30,27 +35,37 @@ const Nav = () => {
           id="bs-example-navbar-collapse-1"
         >
           <ul className="nav navbar-nav navbar-right">
-            <li>
-              <Link to="/Home">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="#portfolio">Portfolio</Link>
-            </li>
-            <li>
-              <Link to="#events">Events</Link>
-            </li>
-            <li>
-              <Link to="#team">Team</Link>
-            </li>
-            <li>
-              <Link to="#contact">Contact</Link>
-            </li>
+            {user.accessToken ? (
+              <>
+                <li>
+                  <Link to="/Home">Home</Link>
+                </li>
+                <li>
+                  <Link to="#portfolio">Portfolio</Link>
+                </li>
+                <li>
+                  <Link to="#events">Events</Link>
+                </li>
+                <li>
+                  <Link to="#team">Team</Link>
+                </li>
+                <li>
+                  <Link to="#contact">Contact</Link>
+                </li>
+                <li>
+                  <Link to="/logout">Logout</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         {/* <!-- /.navbar-collapse --> */}
