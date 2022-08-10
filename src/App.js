@@ -1,4 +1,8 @@
 /* eslint-disable */
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { AuthContext } from "./Contexts/authContext";
 
 import Header from "./Components/Home/Header";
 import Nav from "./Components/Home/Nav";
@@ -19,56 +23,76 @@ import ScrollToTop from "./Components/Utils/ScrollToTop";
 import Modal from "./Components/Other/Modal";
 import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
-
-import { Routes, Route } from "react-router-dom";
+import Logout from "./Components/Authentication/Logout/Logout";
 
 function App() {
+  const [auth, setAuth] = useState({});
+
+  const userLoginHandler = (authData) => {
+    setAuth(authData);
+  };
+
+  const userLogoutHandler = () => {
+    setAuth({});
+  };
+
   return (
-    <>
-      <div className="wrapper" id="home">
-        <Header />
-        <Nav />
-        {/* <Banner />
-        <LatestAlbum />
-        <Promo />
-        <FeaturedAlbum />
-        <CallToAction />
-        <WorkWithUs />
-        <NewsLetter />
-        <Portfolio />
-        <Events />
-        <About />
-        <Meet />
-        <Contact />
-        <Footer />
-        <ScrollToTop />
-        <Modal /> */}
+    <AuthContext.Provider
+      value={{ user: auth, userLoginHandler, userLogoutHandler }}
+    >
+      <>
+        <div className="wrapper" id="home">
+          <Header />
+          <Nav />
 
-        <Routes>
-          {/* <Route path="/" element={<Home />}></Route> */}
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Banner />
+                  <LatestAlbum />
+                  <Promo />
+                  <FeaturedAlbum />
+                  <CallToAction />
+                  <WorkWithUs />
+                  <NewsLetter />
+                  <Portfolio />
+                  <Events />
+                  <About />
+                  <Meet />
+                  <Contact />
+                  <Footer />
+                  <ScrollToTop />
+                  <Modal />
+                </>
+              }
+            ></Route>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+        </div>
 
-      {/* <!-- Javascript files --> */}
-      {/* <!-- jQuery --> */}
-      <script src="js/jquery.js"></script>
-      {/* <!-- Bootstrap JS --> */}
-      <script src="js/bootstrap.min.js"></script>
-      {/* <!-- WayPoints JS --> */}
-      <script src="js/waypoints.min.js"></script>
-      {/* <!-- Include js plugin --> */}
-      <script src="js/owl.carousel.min.js"></script>
-      {/* <!-- One Page Nav --> */}
-      <script src="js/jquery.nav.js"></script>
-      {/* <!-- Respond JS for IE8 --> */}
-      <script src="js/respond.min.js"></script>
-      {/* <!-- HTML5 Support for IE --> */}
-      <script src="js/html5shiv.js"></script>
-      {/* <!-- Custom JS --> */}
-      <script src="js/custom.js"></script>
-    </>
+        {/* <!-- Javascript files --> */}
+        {/* <!-- jQuery --> */}
+        <script src="js/jquery.js"></script>
+        {/* <!-- Bootstrap JS --> */}
+        <script src="js/bootstrap.min.js"></script>
+        {/* <!-- WayPoints JS --> */}
+        <script src="js/waypoints.min.js"></script>
+        {/* <!-- Include js plugin --> */}
+        <script src="js/owl.carousel.min.js"></script>
+        {/* <!-- One Page Nav --> */}
+        <script src="js/jquery.nav.js"></script>
+        {/* <!-- Respond JS for IE8 --> */}
+        <script src="js/respond.min.js"></script>
+        {/* <!-- HTML5 Support for IE --> */}
+        <script src="js/html5shiv.js"></script>
+        {/* <!-- Custom JS --> */}
+        <script src="js/custom.js"></script>
+      </>
+    </AuthContext.Provider>
   );
 }
 
