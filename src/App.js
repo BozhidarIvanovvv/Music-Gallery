@@ -24,6 +24,7 @@ import Modal from "./Components/Other/Modal";
 import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
 import Logout from "./Components/Authentication/Logout/Logout";
+import Error from "./Components/Error/Error";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -71,6 +72,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/error" element={<Error />} />
           </Routes>
         </div>
 
