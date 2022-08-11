@@ -20,9 +20,17 @@ const Register = () => {
       return;
     }
 
-    authService.register(email, password).then((authData) => {
-      navigate("/login");
-    });
+    authService
+      .register(email, password)
+      .then((data) => {
+        if (data.accessToken === undefined) {
+          throw new Error(`${data.code} : ${data.message}!`);
+        }
+        navigate("/login");
+      })
+      .catch((error) => {
+        navigate("/error", { state: { error } });
+      });
   };
 
   return (

@@ -20,11 +20,14 @@ const Login = () => {
     authService
       .login(email, password)
       .then((data) => {
+        if (data.accessToken === undefined) {
+          throw new Error(`${data.code} : ${data.message}!`);
+        }
         userLoginHandler(data);
         navigate("/");
       })
-      .catch(() => {
-        navigate("/error");
+      .catch((error) => {
+        navigate("/error", { state: { error } });
       });
   };
 
