@@ -1,0 +1,13 @@
+.span {
+  width: 70px;
+  color: white;
+
+  font-weight: bold;
+
+  padding: 25px 30px;
+}
+
+.navbar-styles {
+  display: flex;
+  align-items: center;
+}

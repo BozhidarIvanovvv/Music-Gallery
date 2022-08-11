@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../../Contexts/authContext";
+import { AuthContext } from "../../../Contexts/authContext";
+
+import styles from "./Nav.module.css";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
@@ -34,9 +36,14 @@ const Nav = () => {
           className="collapse navbar-collapse"
           id="bs-example-navbar-collapse-1"
         >
-          <ul className="nav navbar-nav navbar-right">
+          <ul
+            className={`nav navbar-nav navbar-right ${styles["navbar-styles"]}`}
+          >
             {user.accessToken ? (
               <>
+                <li>
+                  <span className={styles.span}>Hello, {user.email}!</span>
+                </li>
                 <li>
                   <Link to="/Home">Home</Link>
                 </li>

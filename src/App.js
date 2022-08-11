@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthContext } from "./Contexts/authContext";
 
 import Header from "./Components/Home/Header";
-import Nav from "./Components/Home/Nav";
+import Nav from "./Components/Home/Nav/Nav";
 import Banner from "./Components/Home/Banner";
 import LatestAlbum from "./Components/Hero/LatestAlbum";
 import Promo from "./Components/Hero/Promo";
