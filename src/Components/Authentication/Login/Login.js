@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import styles from "./Login.module.css";
 import * as authService from "../../../Services/authService";
-import { AuthContext } from "../../../Contexts/authContext";
+import { AuthContext } from "../../../Contexts/AuthContext";
 
 const Login = () => {
   const { userLoginHandler } = useContext(AuthContext);

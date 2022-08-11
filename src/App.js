@@ -2,14 +2,16 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { AuthContext } from "./Contexts/authContext";
+import * as albumService from "./Services/albumService";
+import { AuthContext } from "./Contexts/AuthContext";
+import { AlbumContext } from "./Contexts/AlbumContext";
 
 import Header from "./Components/Home/Header";
 import Nav from "./Components/Home/Nav/Nav";
 import Banner from "./Components/Home/Banner";
 import LatestAlbum from "./Components/Hero/LatestAlbum";
 import Promo from "./Components/Hero/Promo";
-import FeaturedAlbum from "./Components/Other/FeaturedAlbum";
+import FeaturedAlbums from "./Components/Home/FeaturedAlbums/FeaturedAlbums";
 import CallToAction from "./Components/Other/CallToAction";
 import WorkWithUs from "./Components/Other/WorkWithUs";
 import NewsLetter from "./Components/Other/NewsLetter";
@@ -27,6 +29,7 @@ import Logout from "./Components/Authentication/Logout/Logout";
 import Error from "./Components/Error/Error";
 
 function App() {
+  const [albums, setAlbums] = useState([]);
   const [auth, setAuth] = useState({});
 
   const userLoginHandler = (authData) => {
@@ -37,6 +40,12 @@ function App() {
     setAuth({});
   };
 
+  useEffect(() => {
+    albumService.getAll().then((result) => {
+      setAlbums(result);
+    });
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{ user: auth, userLoginHandler, userLogoutHandler }}
@@ -46,34 +55,37 @@ function App() {
           <Header />
           <Nav />
 
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Banner />
-                  <LatestAlbum />
-                  <Promo />
-                  <FeaturedAlbum />
-                  <CallToAction />
-                  <WorkWithUs />
-                  <NewsLetter />
-                  <Portfolio />
-                  <Events />
-                  <About />
-                  <Meet />
-                  <Contact />
-                  <Footer />
-                  <ScrollToTop />
-                  <Modal />
-                </>
-              }
-            ></Route>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/error" element={<Error />} />
-          </Routes>
+          <AlbumContext.Provider value={albums}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Banner />
+                    <FeaturedAlbums albums={albums} />
+                    <LatestAlbum />
+                    <Promo />
+                    <CallToAction />
+                    <WorkWithUs />
+                    <NewsLetter />
+                    <Portfolio />
+                    <Events />
+                    <About />
+                    <Meet />
+                    <Contact />
+                    <Footer />
+                    <ScrollToTop />
+                    <Modal />
+                  </>
+                }
+              ></Route>
+
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/error" element={<Error />} />
+            </Routes>
+          </AlbumContext.Provider>
         </div>
 
         {/* <!-- Javascript files --> */}
