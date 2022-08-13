@@ -1,4 +1,4 @@
-const request = async (method, url, data) => {
+const fetcher = async (method, url, data) => {
   try {
     const user = localStorage.getItem("auth");
     const auth = JSON.parse(user || "{}");
@@ -8,7 +8,6 @@ const request = async (method, url, data) => {
     if (auth.accessToken) {
       headers["X-Authorization"] = auth.accessToken;
     }
-
     let initialRequest;
 
     if (method === "GET") {
@@ -32,8 +31,8 @@ const request = async (method, url, data) => {
   }
 };
 
-export const get = request.bind({}, "GET");
-export const post = request.bind({}, "POST");
-export const patch = request.bind({}, "PATCH");
-export const put = request.bind({}, "PUT");
-export const remove = request.bind({}, "DELETE");
+export const get = fetcher.bind({}, "GET");
+export const post = fetcher.bind({}, "POST");
+export const patch = fetcher.bind({}, "PATCH");
+export const put = fetcher.bind({}, "PUT");
+export const remove = fetcher.bind({}, "DELETE");
