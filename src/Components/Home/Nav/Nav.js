@@ -28,6 +28,7 @@ const Nav = () => {
           <a className="navbar-brand" href="#home">
             {/* <!-- logo image --> */}
             <img className="img-responsive" src="img/logo/logo.png" alt="" />
+            Music Gallery
           </a>
         </div>
 

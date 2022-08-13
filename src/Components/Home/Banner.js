@@ -15,15 +15,15 @@ const Banner = () => {
               <div className="carousel-caption slide-one">
                 {/* <!-- heading --> */}
                 <h2 className="animated fadeInLeftBig">
-                  <i className="fa fa-music"></i> Melodi For You!
+                  <i className="fa fa-music"></i> Music Gallery
                 </h2>
                 {/* <!-- paragraph --> */}
                 <h3 className="animated fadeInRightBig">
                   Find More Innovative &amp; Creative Music Albums.
                 </h3>
                 {/* <!-- button --> */}
-                <a href="#" className="animated fadeIn btn btn-theme">
-                  Download Here
+                <a href="#Featured" className="animated fadeIn btn btn-theme">
+                  Featured Albums
                 </a>
               </div>
             </div>

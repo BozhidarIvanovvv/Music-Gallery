@@ -1,15 +1,25 @@
+import { Link } from "react-router-dom";
 import Album from "./Album";
+
+import styles from "./FeaturedAlbums.module.css";
 
 const FeaturedAlbums = ({ albums }) => {
   return (
-    <div className="featured pad" id="featuredalbum">
+    <div className="featured pad" id="Featured" name="Featured">
       <div className="container">
         {/* <!-- default heading --> */}
         <div className="default-heading">
           {/* <!-- heading --> */}
-          <h2>Featured Album</h2>
+          <h2>Featured Albums</h2>
         </div>
         {/* <!-- featured album elements --> */}
+        <Link
+          to="/create"
+          className={`btn btn-lg btn-theme ${styles["create"]}`}
+          id="CreateAlbum"
+        >
+          Create Album
+        </Link>
         <div className="featured-element">
           <div className="row">
             {

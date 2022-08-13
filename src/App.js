@@ -1,10 +1,11 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import * as albumService from "./Services/albumService";
 import { AuthContext } from "./Contexts/AuthContext";
 import { AlbumContext } from "./Contexts/AlbumContext";
+import { useLocalStorage } from "./Hooks/useLocalStorage";
 
 import Header from "./Components/Home/Header";
 import Nav from "./Components/Home/Nav/Nav";
@@ -27,10 +28,12 @@ import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
 import Logout from "./Components/Authentication/Logout/Logout";
 import Error from "./Components/Error/Error";
+import Create from "./Components/Create/Create";
 
 function App() {
   const [albums, setAlbums] = useState([]);
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useLocalStorage("auth", {});
+  const navigate = useNavigate();
 
   const userLoginHandler = (authData) => {
     setAuth(authData);
@@ -46,6 +49,12 @@ function App() {
     });
   }, []);
 
+  const albumAdd = (album) => {
+    setAlbums((state) => [...state, album]);
+
+    navigate("/#FeaturedAlbums");
+  };
+
   return (
     <AuthContext.Provider
       value={{ user: auth, userLoginHandler, userLogoutHandler }}
@@ -55,7 +64,7 @@ function App() {
           <Header />
           <Nav />
 
-          <AlbumContext.Provider value={albums}>
+          <AlbumContext.Provider value={{ albums, albumAdd }}>
             <Routes>
               <Route
                 path="/"
@@ -84,6 +93,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/error" element={<Error />} />
+              <Route path="/create" element={<Create />} />
             </Routes>
           </AlbumContext.Provider>
         </div>

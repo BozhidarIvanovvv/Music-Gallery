@@ -1,0 +1,21 @@
+.create-wrapper {
+  padding-top: 10%;
+  width: 33%;
+  text-align: center;
+  margin: 0 auto;
+
+  font-size: 18px;
+}
+
+.label {
+  display: block;
+}
+
+.btn-submit {
+  display: block;
+  margin: auto;
+}
+
+.input {
+  width: 100%;
+}
