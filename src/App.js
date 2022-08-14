@@ -29,6 +29,7 @@ import Login from "./Components/Authentication/Login/Login";
 import Logout from "./Components/Authentication/Logout/Logout";
 import Error from "./Components/Error/Error";
 import Create from "./Components/Create/Create";
+import Details from "./Components/Details/Details";
 
 function App() {
   const [albums, setAlbums] = useState([]);
@@ -94,6 +95,7 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               <Route path="/error" element={<Error />} />
               <Route path="/create" element={<Create />} />
+              <Route path="/details/:albumId" element={<Details />} />
             </Routes>
           </AlbumContext.Provider>
         </div>

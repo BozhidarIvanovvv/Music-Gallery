@@ -1,0 +1,18 @@
+.details-button {
+  bottom: 15px;
+  font-size: 17px;
+  border: 1px solid white;
+  width: 45%;
+  padding: 10px 20px;
+
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.details-button:hover {
+  background-color: #d12323;
+}

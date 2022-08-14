@@ -46,7 +46,7 @@ const Nav = () => {
                   <span className={styles.span}>Hello, {user.email}!</span>
                 </li>
                 <li>
-                  <Link to="/Home">Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
                   <Link to="#portfolio">Portfolio</Link>

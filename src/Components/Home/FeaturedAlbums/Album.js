@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import styles from "./Album.module.css";
+
 const Album = ({ album }) => {
   return (
     <div className="col-md-4 col-sm-6">
@@ -8,7 +11,17 @@ const Album = ({ album }) => {
           {/* <!-- image --> */}
           <img className="img-responsive" src={album.imageUrl} alt="" />
           {/* <!-- paragraph --> */}
-          <p>{album.summary}</p>
+          <p>
+            {album.summary.length > 500
+              ? `${album.summary.substring(0, 300)}...`
+              : album.summary}
+            <Link
+              to={`/details/${album._id}`}
+              className={`label label-theme ${styles["details-button"]}`}
+            >
+              Learn More
+            </Link>
+          </p>
         </div>
         {/* <!-- featured information --> */}
         <div className="featured-item-info">
