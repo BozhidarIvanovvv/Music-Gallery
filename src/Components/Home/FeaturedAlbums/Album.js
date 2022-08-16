@@ -12,7 +12,7 @@ const Album = ({ album }) => {
           <img className="img-responsive" src={album.imageUrl} alt="" />
           {/* <!-- paragraph --> */}
           <p>
-            {album.summary.length > 500
+            {album.summary.length > 300
               ? `${album.summary.substring(0, 300)}...`
               : album.summary}
             <Link

@@ -23,13 +23,13 @@ import Meet from "./Components/Other/Meet";
 import Contact from "./Components/Other/Contact";
 import Footer from "./Components/Home/Footer";
 import ScrollToTop from "./Components/Utils/ScrollToTop";
-import Modal from "./Components/Other/Modal";
 import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
 import Logout from "./Components/Authentication/Logout/Logout";
 import Error from "./Components/Error/Error";
 import Create from "./Components/Create/Create";
 import Details from "./Components/Details/Details";
+import EditAlbum from "./Components/EditAlbum/EditAlbum";
 
 function App() {
   const [albums, setAlbums] = useState([]);
@@ -59,7 +59,13 @@ function App() {
   const albumRemove = (albumId) => {
     setAlbums((state) => [...state.filter((a) => a._id !== albumId)]);
 
-    navigate("/#FeaturedAlbums");
+    albumService.delOne(albumId).then(() => {
+      navigate("/#FeaturedAlbums");
+    });
+  };
+
+  const albumEdit = (albumId, albumData) => {
+    setAlbums((state) => state.map((a) => (a._id === albumId ? albumData : a)));
   };
 
   return (
@@ -71,7 +77,9 @@ function App() {
           <Header />
           <Nav />
 
-          <AlbumContext.Provider value={{ albums, albumAdd, albumRemove }}>
+          <AlbumContext.Provider
+            value={{ albums, albumAdd, albumRemove, albumEdit }}
+          >
             <Routes>
               <Route
                 path="/"
@@ -102,6 +110,7 @@ function App() {
               <Route path="/error" element={<Error />} />
               <Route path="/create" element={<Create />} />
               <Route path="/details/:albumId" element={<Details />} />
+              <Route path="/edit/:albumId" element={<EditAlbum />} />
             </Routes>
           </AlbumContext.Provider>
         </div>

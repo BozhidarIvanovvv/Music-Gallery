@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthContext";
+
 import DeleteModal from "./Modal/DeleteModal";
 
 import * as albumService from "../../Services/albumService";
@@ -11,11 +13,16 @@ const Details = () => {
   const [currentAlbum, setCurrentAlbum] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
+  const { user } = useContext(AuthContext);
+
+  console.log(currentAlbum);
+  console.log(user);
+
   useEffect(() => {
     albumService.getOne(albumId).then((result) => {
       setCurrentAlbum(result);
     });
-  }, []);
+  }, [albumId]);
 
   return (
     <>
@@ -46,19 +53,26 @@ const Details = () => {
           </div>
 
           <div className={styles["price-btnbox"]}>
-            <button
-              className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-delete"]}`}
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            >
-              Delete
-            </button>
-            <button
-              className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-edit"]}`}
-            >
-              Edit
-            </button>
+            {user._id === currentAlbum._ownerId ? (
+              <>
+                <button
+                  className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-delete"]}`}
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
+                >
+                  Delete
+                </button>
+                <Link
+                  to={`/edit/${albumId}`}
+                  className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-edit"]}`}
+                >
+                  Edit
+                </Link>{" "}
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </section>
       </div>

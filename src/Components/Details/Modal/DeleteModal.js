@@ -35,7 +35,7 @@ const DeleteModal = ({ closeModal }) => {
           >
             Cancel
           </button>
-          <button onClick={albumRemove(albumId)}>Continue</button>
+          <button onClick={() => albumRemove(albumId)}>Continue</button>
         </div>
       </div>
     </div>

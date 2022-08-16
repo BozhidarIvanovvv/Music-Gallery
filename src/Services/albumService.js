@@ -10,3 +10,6 @@ export const getOne = (albumId) =>
 
 export const delOne = (albumId) =>
   fetcher.remove(`${constants.baseUrlAlbums}/${albumId}`);
+
+export const edit = (albumId, albumData) =>
+  fetcher.put(`${constants.baseUrlAlbums}/${albumId}`, albumData);
