@@ -56,6 +56,12 @@ function App() {
     navigate("/#FeaturedAlbums");
   };
 
+  const albumRemove = (albumId) => {
+    setAlbums((state) => [...state.filter((a) => a._id !== albumId)]);
+
+    navigate("/#FeaturedAlbums");
+  };
+
   return (
     <AuthContext.Provider
       value={{ user: auth, userLoginHandler, userLogoutHandler }}
@@ -65,7 +71,7 @@ function App() {
           <Header />
           <Nav />
 
-          <AlbumContext.Provider value={{ albums, albumAdd }}>
+          <AlbumContext.Provider value={{ albums, albumAdd, albumRemove }}>
             <Routes>
               <Route
                 path="/"

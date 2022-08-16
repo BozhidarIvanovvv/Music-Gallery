@@ -7,3 +7,6 @@ export const create = (album) => fetcher.post(constants.baseUrlAlbums, album);
 
 export const getOne = (albumId) =>
   fetcher.get(`${constants.baseUrlAlbums}/${albumId}`);
+
+export const delOne = (albumId) =>
+  fetcher.remove(`${constants.baseUrlAlbums}/${albumId}`);

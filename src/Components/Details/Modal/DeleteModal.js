@@ -1,4 +1,12 @@
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+
+import { AlbumContext } from "../../../Contexts/AlbumContext";
+
 const DeleteModal = ({ closeModal }) => {
+  const { albumRemove } = useContext(AlbumContext);
+  const { albumId } = useParams();
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -27,7 +35,7 @@ const DeleteModal = ({ closeModal }) => {
           >
             Cancel
           </button>
-          <button>Continue</button>
+          <button onClick={albumRemove(albumId)}>Continue</button>
         </div>
       </div>
     </div>
