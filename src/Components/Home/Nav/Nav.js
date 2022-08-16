@@ -40,14 +40,15 @@ const Nav = () => {
           <ul
             className={`nav navbar-nav navbar-right ${styles["navbar-styles"]}`}
           >
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {user.accessToken ? (
               <>
                 <li>
                   <span className={styles.span}>Hello, {user.email}!</span>
                 </li>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
+
                 <li>
                   <Link to="#portfolio">Portfolio</Link>
                 </li>

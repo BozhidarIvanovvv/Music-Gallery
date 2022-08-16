@@ -85,7 +85,7 @@ function App() {
                     <Contact />
                     <Footer />
                     <ScrollToTop />
-                    <Modal />
+                    {/* <Modal /> */}
                   </>
                 }
               ></Route>
