@@ -1097,7 +1097,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: white;
   text-decoration: none;
 }
 a:focus,
@@ -5117,9 +5117,6 @@ a.badge:hover {
 }
 a.thumbnail.active,
 a.thumbnail:focus,
-a.thumbnail:hover {
-  border-color: #337ab7;
-}
 .thumbnail .caption {
   padding: 9px;
   color: #333;

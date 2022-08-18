@@ -8,15 +8,12 @@ import * as albumService from "../../Services/albumService";
 
 import styles from "./Details.module.css";
 
-const Details = () => {
+const Details = ({ addToCartHandler }) => {
   const { albumId } = useParams();
   const [currentAlbum, setCurrentAlbum] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
   const { user } = useContext(AuthContext);
-
-  console.log(currentAlbum);
-  console.log(user);
 
   useEffect(() => {
     albumService.getOne(albumId).then((result) => {
@@ -70,6 +67,18 @@ const Details = () => {
                   Edit
                 </Link>{" "}
               </>
+            ) : (
+              <></>
+            )}
+            {user ? (
+              <button
+                className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-buy"]}`}
+                onClick={() => {
+                  addToCartHandler(currentAlbum);
+                }}
+              >
+                Buy
+              </button>
             ) : (
               <></>
             )}

@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
 
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ cartItemsCount }) => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -40,15 +40,14 @@ const Nav = () => {
           <ul
             className={`nav navbar-nav navbar-right ${styles["navbar-styles"]}`}
           >
-            <li>
-              <Link to="/">Home</Link>
-            </li>
             {user.accessToken ? (
               <>
                 <li>
                   <span className={styles.span}>Hello, {user.email}!</span>
                 </li>
-
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
                 <li>
                   <Link to="#portfolio">Portfolio</Link>
                 </li>
@@ -64,9 +63,22 @@ const Nav = () => {
                 <li>
                   <Link to="/logout">Logout</Link>
                 </li>
+                <div className={styles.cart}>
+                  <span className={styles["cart-first"]}>
+                    <Link to="/cart">
+                      <i className="fa-solid fa-cart-shopping"></i>
+                    </Link>
+                  </span>
+                  <span className={styles["cart-second"]}>
+                    {cartItemsCount}
+                  </span>
+                </div>
               </>
             ) : (
               <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
                 <li>
                   <Link to="/login">Login</Link>
                 </li>

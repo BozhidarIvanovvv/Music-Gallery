@@ -30,10 +30,13 @@ import Error from "./Components/Error/Error";
 import Create from "./Components/Create/Create";
 import Details from "./Components/Details/Details";
 import EditAlbum from "./Components/EditAlbum/EditAlbum";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   const [albums, setAlbums] = useState([]);
   const [auth, setAuth] = useLocalStorage("auth", {});
+  const [cart, setCart] = useState([]);
+
   const navigate = useNavigate();
 
   const userLoginHandler = (authData) => {
@@ -68,6 +71,12 @@ function App() {
     setAlbums((state) => state.map((a) => (a._id === albumId ? albumData : a)));
   };
 
+  const addToCartHandler = (album) => {
+    console.log(cart);
+    if (cart.indexOf(album) !== -1) return;
+    setCart([...cart, album]);
+  };
+
   return (
     <AuthContext.Provider
       value={{ user: auth, userLoginHandler, userLogoutHandler }}
@@ -75,7 +84,7 @@ function App() {
       <>
         <div className="wrapper" id="home">
           <Header />
-          <Nav />
+          <Nav cartItemsCount={cart.length} />
 
           <AlbumContext.Provider
             value={{ albums, albumAdd, albumRemove, albumEdit }}
@@ -109,8 +118,15 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               <Route path="/error" element={<Error />} />
               <Route path="/create" element={<Create />} />
-              <Route path="/details/:albumId" element={<Details />} />
+              <Route
+                path="/details/:albumId"
+                element={<Details addToCartHandler={addToCartHandler} />}
+              />
               <Route path="/edit/:albumId" element={<EditAlbum />} />
+              <Route
+                path="/cart"
+                element={<Cart cart={cart} setCart={setCart} />}
+              />
             </Routes>
           </AlbumContext.Provider>
         </div>
