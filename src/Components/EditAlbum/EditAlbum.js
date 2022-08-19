@@ -95,6 +95,18 @@ const EditAlbum = () => {
             />
           </div>
 
+          <div className="form-group">
+            <label className={styles["label"]} htmlFor="price">
+              Price:
+            </label>
+            <input
+              className={styles["input"]}
+              id="price"
+              name="price"
+              defaultValue={currentAlbum.price}
+            />
+          </div>
+
           <div className="modal-footer">
             <input
               type="submit"

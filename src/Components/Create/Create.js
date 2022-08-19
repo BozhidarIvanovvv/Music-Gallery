@@ -67,6 +67,13 @@ const Create = () => {
             <input className={styles["input"]} id="imageUrl" name="imageUrl" />
           </div>
 
+          <div className="form-group">
+            <label className={styles["label"]} htmlFor="price">
+              Price:
+            </label>
+            <input className={styles["input"]} id="price" name="price" />
+          </div>
+
           <div className="modal-footer">
             <input
               type="submit"

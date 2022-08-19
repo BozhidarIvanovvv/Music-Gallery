@@ -70,7 +70,7 @@ const Details = ({ addToCartHandler }) => {
             ) : (
               <></>
             )}
-            {user ? (
+            {user._id ? (
               <button
                 className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-buy"]}`}
                 onClick={() => {
