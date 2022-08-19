@@ -31,11 +31,13 @@ import Create from "./Components/Create/Create";
 import Details from "./Components/Details/Details";
 import EditAlbum from "./Components/EditAlbum/EditAlbum";
 import Cart from "./Components/Cart/Cart";
+import Funds from "./Components/Funds/Funds";
 
 function App() {
   const [albums, setAlbums] = useState([]);
   const [auth, setAuth] = useLocalStorage("auth", {});
   const [cart, setCart] = useState([]);
+  const [funds, setFunds] = useState({ fundsState: 0 });
 
   const navigate = useNavigate();
 
@@ -84,7 +86,7 @@ function App() {
       <>
         <div className="wrapper" id="home">
           <Header />
-          <Nav cartItemsCount={cart.length} />
+          <Nav cartItemsCount={cart.length} funds={funds} />
 
           <AlbumContext.Provider
             value={{ albums, albumAdd, albumRemove, albumEdit }}
@@ -118,6 +120,10 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               <Route path="/error" element={<Error />} />
               <Route path="/create" element={<Create />} />
+              <Route
+                path="/addFunds"
+                element={<Funds funds={funds} setFunds={setFunds} />}
+              />
               <Route
                 path="/details/:albumId"
                 element={<Details addToCartHandler={addToCartHandler} />}

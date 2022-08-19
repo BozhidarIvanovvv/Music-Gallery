@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../../Contexts/AuthContext";
 
 import styles from "./Nav.module.css";
 
-const Nav = ({ cartItemsCount }) => {
+const Nav = ({ cartItemsCount, funds }) => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -49,23 +49,22 @@ const Nav = ({ cartItemsCount }) => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="#portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <Link to="#events">Events</Link>
-                </li>
-                <li>
-                  <Link to="#team">Team</Link>
-                </li>
-                <li>
-                  <Link to="#contact">Contact</Link>
-                </li>
-                <li>
                   <Link to="/logout">Logout</Link>
                 </li>
+
+                <Link
+                  className={`${styles["funds-link"]} ${styles.link}`}
+                  to="/addFunds"
+                >
+                  Add Funds
+                </Link>
+                <span className={styles["funds"]}>
+                  Your Funds: {funds.fundsState}$
+                </span>
+
                 <div className={styles.cart}>
                   <span className={styles["cart-first"]}>
-                    <Link to="/cart">
+                    <Link className={styles.link} to="/cart">
                       <i className="fa-solid fa-cart-shopping"></i>
                     </Link>
                   </span>

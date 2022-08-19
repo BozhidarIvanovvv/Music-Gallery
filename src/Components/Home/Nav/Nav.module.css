@@ -33,3 +33,15 @@
   position: relative;
   top: -15px;
 }
+
+.funds,
+.funds-link {
+  padding: 25px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.link:hover {
+  color: red;
+}
