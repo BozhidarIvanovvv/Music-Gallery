@@ -38,6 +38,7 @@ function App() {
   const [auth, setAuth] = useLocalStorage("auth", {});
   const [cart, setCart] = useState([]);
   const [funds, setFunds] = useState({ fundsState: 0 });
+  const [boughtAlbums, setboughtAlbums] = useState([]);
 
   const navigate = useNavigate();
 
@@ -74,9 +75,37 @@ function App() {
   };
 
   const addToCartHandler = (album) => {
-    console.log(cart);
     if (cart.indexOf(album) !== -1) return;
     setCart([...cart, album]);
+  };
+
+  const buyAlbumHandler = (products) => {
+    let totalPrice = 0;
+
+    if (products.length === 1) {
+      totalPrice = Number(products[0].price);
+    } else {
+      totalPrice = products
+        .reduce(function (acc, obj) {
+          return acc + Number(obj.price);
+        }, 0)
+        .toFixed(2);
+    }
+
+    if (funds.fundsState - totalPrice < 0) {
+      console.log("Not enough funds!");
+      return;
+    }
+
+    products.forEach((p) => {
+      p.buyerId = auth._id;
+    });
+
+    setboughtAlbums(products);
+    setFunds({
+      fundsState: Number(funds.fundsState) - Number(totalPrice),
+    });
+    setCart([]);
   };
 
   return (
@@ -126,12 +155,23 @@ function App() {
               />
               <Route
                 path="/details/:albumId"
-                element={<Details addToCartHandler={addToCartHandler} />}
+                element={
+                  <Details
+                    addToCartHandler={addToCartHandler}
+                    boughtAlbums={boughtAlbums}
+                  />
+                }
               />
               <Route path="/edit/:albumId" element={<EditAlbum />} />
               <Route
                 path="/cart"
-                element={<Cart cart={cart} setCart={setCart} />}
+                element={
+                  <Cart
+                    cart={cart}
+                    setCart={setCart}
+                    handleBuy={buyAlbumHandler}
+                  />
+                }
               />
             </Routes>
           </AlbumContext.Provider>

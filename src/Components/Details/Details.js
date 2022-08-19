@@ -8,7 +8,7 @@ import * as albumService from "../../Services/albumService";
 
 import styles from "./Details.module.css";
 
-const Details = ({ addToCartHandler }) => {
+const Details = ({ boughtAlbums, addToCartHandler }) => {
   const { albumId } = useParams();
   const [currentAlbum, setCurrentAlbum] = useState({});
   const [openModal, setOpenModal] = useState(false);
@@ -70,7 +70,8 @@ const Details = ({ addToCartHandler }) => {
             ) : (
               <></>
             )}
-            {user._id ? (
+            {user._id &&
+            !boughtAlbums.some((a) => a._id === currentAlbum._id) ? (
               <button
                 className={`${styles["price-cart__btn"]} ${styles["price-btn"]} ${styles["btn-buy"]}`}
                 onClick={() => {
@@ -80,7 +81,9 @@ const Details = ({ addToCartHandler }) => {
                 Buy
               </button>
             ) : (
-              <></>
+              <div>
+                You have already bought this album or you are not logged in!
+              </div>
             )}
           </div>
         </section>

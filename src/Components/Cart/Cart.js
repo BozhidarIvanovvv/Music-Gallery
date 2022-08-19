@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Cart.module.css";
 
-const Cart = ({ cart, setCart }) => {
+const Cart = ({ cart, setCart, handleBuy }) => {
   const [price, setPrice] = useState(0);
 
   const handlePrice = () => {
@@ -43,6 +43,12 @@ const Cart = ({ cart, setCart }) => {
             <span>Total Price of your Cart</span>
             <span>{price}$</span>
           </div>
+          <button
+            className={styles["buy-button"]}
+            onClick={() => handleBuy(cart)}
+          >
+            Buy
+          </button>
         </>
       ) : (
         <h1 className={styles["empty-cart"]}>Your shopping cart is empty!</h1>
