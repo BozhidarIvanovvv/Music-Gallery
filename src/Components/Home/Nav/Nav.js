@@ -13,23 +13,11 @@ const Nav = ({ cartItemsCount, funds }) => {
       <div className="container">
         {/* <!-- Brand and toggle get grouped for better mobile display --> */}
         <div className="navbar-header">
-          <button
-            type="button"
-            className="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1"
-          >
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </button>
           {/* <!-- logo area --> */}
-          <a className="navbar-brand" href="#home">
+          <Link className={styles["navbar-brand"]} to="/">
             {/* <!-- logo image --> */}
-            <img className="img-responsive" src="img/logo/logo.png" alt="" />
             Music Gallery
-          </a>
+          </Link>
         </div>
 
         {/* <!-- Collect the nav links, forms, and other content for toggling --> */}
@@ -49,7 +37,7 @@ const Nav = ({ cartItemsCount, funds }) => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link to="/featuredAlbums">Featured Albums</Link>
                 </li>
 
                 <Link
@@ -61,6 +49,10 @@ const Nav = ({ cartItemsCount, funds }) => {
                 <span className={styles["funds"]}>
                   Your Funds: {funds.fundsState}$
                 </span>
+
+                <li>
+                  <Link to="/logout">Logout</Link>
+                </li>
 
                 <div className={styles.cart}>
                   <span className={styles["cart-first"]}>

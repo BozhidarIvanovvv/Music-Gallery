@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <div className="banner">
@@ -22,9 +24,12 @@ const Banner = () => {
                   Find More Innovative &amp; Creative Music Albums.
                 </h3>
                 {/* <!-- button --> */}
-                <a href="#Featured" className="animated fadeIn btn btn-theme">
+                <Link
+                  to="/featuredAlbums"
+                  className="animated fadeIn btn btn-theme"
+                >
                   Featured Albums
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -49,24 +54,6 @@ const Banner = () => {
             </div>
           </div>
         </div>
-
-        {/* <!-- Controls --> */}
-        <a
-          className="left carousel-control"
-          href="#carousel-example-generic"
-          role="button"
-          data-slide="prev"
-        >
-          <span className="fa fa-arrow-left" aria-hidden="true"></span>
-        </a>
-        <a
-          className="right carousel-control"
-          href="#carousel-example-generic"
-          role="button"
-          data-slide="next"
-        >
-          <span className="fa fa-arrow-right" aria-hidden="true"></span>
-        </a>
       </div>
     </div>
   );

@@ -42,6 +42,16 @@
   color: white;
 }
 
-.link:hover {
+.navbar-brand {
+  display: table-cell;
+  padding: 15px 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  vertical-align: middle;
+}
+
+.link:hover,
+.navbar-brand:hover {
   color: red;
 }

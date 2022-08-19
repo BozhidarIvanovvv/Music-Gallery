@@ -45,7 +45,6 @@ const Details = ({ boughtAlbums, addToCartHandler }) => {
               <span className={styles["price-box__main-new"]}>
                 {currentAlbum.songCount} - songs
               </span>
-              {/* <span className={styles["price-box__main-discount"]}> 50%</span> */}
             </div>
           </div>
 

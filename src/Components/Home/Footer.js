@@ -5,21 +5,12 @@ const Footer = () => {
         {/* <!-- social media links --> */}
         <div className="social">
           <a className="h-facebook" href="#">
-            <i className="fa fa-facebook"></i>
-          </a>
-          <a className="h-google" href="#">
-            <i className="fa fa-google-plus"></i>
-          </a>
-          <a className="h-linkedin" href="#">
-            <i className="fa fa-linkedin"></i>
-          </a>
-          <a className="h-twitter" href="#">
-            <i className="fa fa-twitter"></i>
+            <i class="fa-solid fa-arrow-up"></i>
           </a>
         </div>
         {/* <!-- copy right --> */}
         <p className="copy-right">
-          &copy; copyright 2018, All rights are reserved.
+          &copy; Copyright {new Date().getFullYear()}, All rights are reserved.
         </p>
       </div>
     </footer>

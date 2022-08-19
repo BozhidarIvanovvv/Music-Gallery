@@ -7,22 +7,10 @@ import { AuthContext } from "./Contexts/AuthContext";
 import { AlbumContext } from "./Contexts/AlbumContext";
 import { useLocalStorage } from "./Hooks/useLocalStorage";
 
-import Header from "./Components/Home/Header";
 import Nav from "./Components/Home/Nav/Nav";
 import Banner from "./Components/Home/Banner";
-import LatestAlbum from "./Components/Hero/LatestAlbum";
-import Promo from "./Components/Hero/Promo";
-import FeaturedAlbums from "./Components/Home/FeaturedAlbums/FeaturedAlbums";
-import CallToAction from "./Components/Other/CallToAction";
-import WorkWithUs from "./Components/Other/WorkWithUs";
-import NewsLetter from "./Components/Other/NewsLetter";
-import Portfolio from "./Components/Other/Portfolio";
-import Events from "./Components/Other/Events";
-import About from "./Components/Other/About";
-import Meet from "./Components/Other/Meet";
-import Contact from "./Components/Other/Contact";
+import FeaturedAlbums from "./Components/FeaturedAlbums/FeaturedAlbums";
 import Footer from "./Components/Home/Footer";
-import ScrollToTop from "./Components/Utils/ScrollToTop";
 import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
 import Logout from "./Components/Authentication/Logout/Logout";
@@ -59,14 +47,14 @@ function App() {
   const albumAdd = (album) => {
     setAlbums((state) => [...state, album]);
 
-    navigate("/#FeaturedAlbums");
+    navigate("/featuredAlbums");
   };
 
   const albumRemove = (albumId) => {
     setAlbums((state) => [...state.filter((a) => a._id !== albumId)]);
 
     albumService.delOne(albumId).then(() => {
-      navigate("/#FeaturedAlbums");
+      navigate("/featuredAlbums");
     });
   };
 
@@ -114,7 +102,6 @@ function App() {
     >
       <>
         <div className="wrapper" id="home">
-          <Header />
           <Nav cartItemsCount={cart.length} funds={funds} />
 
           <AlbumContext.Provider
@@ -126,20 +113,7 @@ function App() {
                 element={
                   <>
                     <Banner />
-                    <FeaturedAlbums albums={albums} />
-                    <LatestAlbum />
-                    <Promo />
-                    <CallToAction />
-                    <WorkWithUs />
-                    <NewsLetter />
-                    <Portfolio />
-                    <Events />
-                    <About />
-                    <Meet />
-                    <Contact />
                     <Footer />
-                    <ScrollToTop />
-                    {/* <Modal /> */}
                   </>
                 }
               ></Route>
@@ -149,6 +123,10 @@ function App() {
               <Route path="/logout" element={<Logout />} />
               <Route path="/error" element={<Error />} />
               <Route path="/create" element={<Create />} />
+              <Route
+                path="/featuredAlbums"
+                element={<FeaturedAlbums albums={albums} />}
+              />
               <Route
                 path="/addFunds"
                 element={<Funds funds={funds} setFunds={setFunds} />}

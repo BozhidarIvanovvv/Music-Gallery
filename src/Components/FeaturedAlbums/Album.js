@@ -32,10 +32,10 @@ const Album = ({ album }) => {
           {/* <!-- horizontal line --> */}
           <hr />
           {/* <!-- some responce from social medial or web likes --> */}
-          <p>
+          {/* <p>
             1024+ <span className="label label-theme">Like</span> &nbsp;&nbsp;
             825+ <span className="label label-theme">Love</span>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
