@@ -39,11 +39,17 @@ const Details = ({ boughtAlbums, addToCartHandler }) => {
           <h1 className={styles["price-main__heading"]}>
             {currentAlbum.title}
           </h1>
+          <h3 className={styles["price-sub__heading"]}>
+            Genre: {currentAlbum.genre}
+          </h3>
           <p className={styles["price-txt"]}>{currentAlbum.summary}</p>
           <div className={styles["price-box"]}>
             <div className={styles["price-box__main"]}>
               <span className={styles["price-box__main-new"]}>
                 {currentAlbum.songCount} - songs
+              </span>
+              <span className={styles["price-box__right"]}>
+                {currentAlbum.price}$
               </span>
             </div>
           </div>
@@ -80,7 +86,7 @@ const Details = ({ boughtAlbums, addToCartHandler }) => {
                 Buy
               </button>
             ) : (
-              <div>
+              <div className={styles.boughtMessage}>
                 You have already bought this album or you are not logged in!
               </div>
             )}

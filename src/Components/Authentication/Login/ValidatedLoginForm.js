@@ -24,7 +24,7 @@ const ValidatedLoginForm = () => {
         .email("Invalid email address!")
         .required("Email is required!"),
       password: Yup.string()
-        .min(6, "Password must be atleast 6 characters long!")
+        .min(5, "Password must be atleast 5 characters long!")
         .max(30, "Password must be 30 characters or less!")
         .required("Password is required!"),
     }),

@@ -235,7 +235,7 @@
 
 .price-box__main {
   display: flex;
-  gap: 1rem;
+  gap: 15vw;
   align-items: center;
 }
 
@@ -585,4 +585,14 @@
 .btn-buy {
   box-shadow: 0px 10px 25px 3px rgb(52, 55, 235, 0.5);
   background-color: rgba(21, 25, 237);
+}
+
+.boughtMessage {
+  font-size: 18px;
+  color: red;
+}
+
+.price-box__right {
+  font-size: 26px;
+  font-weight: bold;
 }
