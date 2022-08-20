@@ -5,7 +5,7 @@ const Footer = () => {
         {/* <!-- social media links --> */}
         <div className="social">
           <a className="h-facebook" href="#">
-            <i class="fa-solid fa-arrow-up"></i>
+            <i className="fa-solid fa-arrow-up"></i>
           </a>
         </div>
         {/* <!-- copy right --> */}

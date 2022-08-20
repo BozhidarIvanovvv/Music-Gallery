@@ -39,7 +39,6 @@ const Nav = ({ cartItemsCount, funds }) => {
                 <li>
                   <Link to="/featuredAlbums">Featured Albums</Link>
                 </li>
-
                 <Link
                   className={`${styles["funds-link"]} ${styles.link}`}
                   to="/addFunds"
@@ -69,6 +68,9 @@ const Nav = ({ cartItemsCount, funds }) => {
               <>
                 <li>
                   <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/featuredAlbums">Featured Albums</Link>
                 </li>
                 <li>
                   <Link to="/login">Login</Link>
