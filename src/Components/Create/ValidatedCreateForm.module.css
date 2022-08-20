@@ -1,4 +1,4 @@
-.edit-wrapper {
+.create-wrapper {
   padding-top: 10%;
   width: 33%;
   text-align: center;
@@ -18,4 +18,10 @@
 
 .input {
   width: 100%;
+}
+
+.errorTag {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
 }
